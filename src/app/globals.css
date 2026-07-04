@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #050816;
+  --foreground: #f5f7ff;
+  --muted: #94a4d0;
+  --text: #f5f7ff;
+  --text-muted: rgba(245, 247, 255, 0.55);
+  --text-faint: rgba(245, 247, 255, 0.32);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --surface: rgba(255, 255, 255, 0.03);
+  --accent: #8db4ff;
+  --gold: #ffd87a;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-ui: 200ms;
+  --snap-offset: 7rem;
+  --ring: rgba(141, 180, 255, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-syne);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .showcase-snap {
+    scroll-snap-type: y proximity;
+  }
+
+  .showcase-snap > * {
+    scroll-snap-align: start;
+    scroll-margin-top: var(--snap-offset);
+  }
+}
+
+@keyframes theme-breathe {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+::selection {
+  background: rgba(141, 180, 255, 0.35);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #8db4ff 50%, #ffd87a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-glow {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(141, 180, 255, 0.18),
+    transparent
+  );
+}
+
+.glass,
+.section-glass {
+  background: var(--section-glass, rgba(10, 15, 34, 0.72));
+  backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--border);
+}
+
+.section-theme-gaming {
+  --section-glass: rgba(8, 12, 28, 0.8);
+}
+
+.section-theme-apps {
+  --section-glass: rgba(16, 16, 20, 0.82);
+}
+
+.gaming-realm {
+  --bg: #050816;
+  --foreground: #f5f7ff;
+  --text-muted: rgba(245, 247, 255, 0.55);
+  --text-faint: rgba(245, 247, 255, 0.32);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --surface: rgba(255, 255, 255, 0.03);
+  --ring: rgba(141, 180, 255, 0.45);
+  color: var(--foreground);
+}
+
+.apps-realm {
+  --apps-bg: #0c0c0e;
+  --bg: #0c0c0e;
+  --foreground: #f5f5f7;
+  --text-muted: rgba(245, 245, 247, 0.58);
+  --text-faint: rgba(245, 245, 247, 0.38);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.11);
+  --surface: rgba(255, 255, 255, 0.025);
+  --ring: rgba(255, 255, 255, 0.28);
+  color: var(--foreground);
+}
+
+.apps-realm .section-label {
+  letter-spacing: 0.26em;
+  color: var(--text-faint);
+}
+
+.apps-realm .showcase-panel-minimal {
+  background: #111113;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+.apps-realm .phone-mockup-glow {
+  opacity: 0.18;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .apps-realm .showcase-panel-minimal:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  transition: color var(--duration-ui) var(--ease-out), border-color var(--duration-ui) var(--ease-out), transform var(--duration-ui) var(--ease-out);
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--bg);
+  background: #f4f5f8;
+  transition: background var(--duration-ui) var(--ease-out), transform var(--duration-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: #ffffff;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+}
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.card-premium {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color var(--duration-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-premium:hover {
+    border-color: var(--border-strong);
+  }
+}
+
+.mesh-games {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(141, 180, 255, 0.14), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(168, 85, 247, 0.1), transparent 50%);
+}
+
+.mesh-apps {
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(250, 36, 60, 0.1), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, rgba(125, 211, 252, 0.12), transparent 50%);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.showcase-panel {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Apps flow — GPU-composited atmosphere (no WebGL) */
+@keyframes apps-orb-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, -3%) scale(1.08);
+  }
+}
+
+@keyframes apps-orb-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5%, 4%) scale(1.06);
+  }
+}
+
+.apps-flow-orb {
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.apps-flow-orb-a {
+  animation: apps-orb-drift-a 14s ease-in-out infinite;
+}
+
+.apps-flow-orb-b {
+  animation: apps-orb-drift-b 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apps-flow-orb-a,
+  .apps-flow-orb-b {
+    animation: none;
+  }
+}
