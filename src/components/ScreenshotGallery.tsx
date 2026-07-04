@@ -49,19 +49,19 @@ export function ScreenshotGallery({
       </motion.div>
 
       {screenshots.length > 1 && (
-        <div className="flex justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {screenshots.map((shot, i) => (
             <button
               key={shot}
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Show screenshot ${i + 1}`}
-              className="overflow-hidden rounded-lg border border-white/10 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.97]"
+              className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg border border-white/10 transition-[border-color,transform] duration-200 hover:border-white/25 active:scale-[0.97]"
               style={{
                 boxShadow: i === active ? `0 0 0 2px ${accent}` : undefined,
               }}
             >
-              <Image src={shot} alt="" width={48} height={96} className={`h-16 w-8 ${screenshotImageClassName(shot, flipImage)}`} />
+              <Image src={shot} alt="" width={48} height={96} className={`h-14 w-8 ${screenshotImageClassName(shot, flipImage)}`} />
             </button>
           ))}
         </div>

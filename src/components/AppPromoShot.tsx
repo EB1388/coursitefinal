@@ -29,8 +29,8 @@ export function AppPromoShot({
 }) {
   const reduceMotion = useReducedMotion();
   const width = compact
-    ? "w-[240px] sm:w-[260px]"
-    : "w-[320px] sm:w-[340px] xl:w-[360px]";
+    ? "w-full max-w-[240px] sm:max-w-[260px]"
+    : "w-full max-w-[320px] sm:max-w-[340px] xl:max-w-[360px]";
 
   return (
     <motion.div

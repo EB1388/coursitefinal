@@ -20,8 +20,8 @@ export function CompanyPrivacyContent() {
           ← Cour
         </Link>
 
-        <article className="card-premium mt-8 p-8 md:p-12">
-          <h1 className="font-display text-4xl font-bold tracking-tight">Cour Privacy Policy</h1>
+        <article className="card-premium mt-8 p-6 sm:p-8 md:p-12">
+          <h1 className="font-display text-[clamp(1.75rem,6vw,2.25rem)] font-bold tracking-tight">Cour Privacy Policy</h1>
           <p className="mt-3 text-sm font-medium" style={{ color: studioAccent }}>
             Last updated: {doc.updated}
           </p>

@@ -12,7 +12,7 @@ export function LocaleToggle() {
           key={code}
           type="button"
           onClick={() => setLocale(code)}
-          className={`rounded-full px-2.5 py-1 transition-colors duration-200 ${
+          className={`min-h-9 min-w-9 rounded-full px-3 py-1.5 transition-colors duration-200 ${
             locale === code
               ? "bg-white/10 text-[var(--text)]"
               : "text-[var(--text-faint)] hover:text-[var(--text-muted)]"

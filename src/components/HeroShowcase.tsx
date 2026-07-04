@@ -76,7 +76,7 @@ export function HeroShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="hero-glow relative min-h-[85vh] overflow-hidden px-6 pb-20 pt-36 md:pb-28 md:pt-44"
+      className="hero-glow relative min-h-[80vh] overflow-hidden px-6 pb-16 pt-28 sm:min-h-[85vh] sm:pb-20 sm:pt-36 md:pb-28 md:pt-44"
     >
       {!isGameShot && (
         <motion.div
@@ -113,7 +113,7 @@ export function HeroShowcase() {
           <motion.h1
             variants={fadeUp}
             transition={{ duration: 0.55, ease: EASE_OUT }}
-            className="mt-6 max-w-3xl text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+            className="mt-6 max-w-3xl text-[clamp(2.25rem,9vw,4.5rem)] font-bold leading-[1.02] tracking-tight md:text-7xl"
             style={{ fontFamily: "var(--font-syne)" }}
           >
             <span className="gradient-text">{tr("heroTitle1")}</span>
@@ -130,7 +130,7 @@ export function HeroShowcase() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5, ease: EASE_OUT }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex flex-wrap gap-3 sm:gap-4"
           >
             <a
               href="#games"
@@ -149,7 +149,7 @@ export function HeroShowcase() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.5, ease: EASE_OUT }}
-            className="mt-16 grid max-w-lg grid-cols-3 gap-6 border-t border-white/5 pt-10"
+            className="mt-12 grid max-w-lg grid-cols-3 gap-3 border-t border-white/5 pt-8 sm:mt-16 sm:gap-6 sm:pt-10"
           >
             {[
               { value: "3", label: tr("statGames") },
@@ -162,10 +162,10 @@ export function HeroShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.08, duration: 0.45, ease: EASE_OUT }}
               >
-                <p className="text-2xl font-bold text-white md:text-3xl" style={{ fontFamily: "var(--font-syne)" }}>
+                <p className="text-xl font-bold text-white sm:text-2xl md:text-3xl" style={{ fontFamily: "var(--font-syne)" }}>
                   {stat.value}
                 </p>
-                <p className="mt-1 text-xs text-white/40">{stat.label}</p>
+                <p className="mt-1 text-[11px] leading-snug text-white/40 sm:text-xs">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -216,7 +216,7 @@ export function HeroShowcase() {
               </motion.p>
             </AnimatePresence>
 
-            <div className="mt-5 flex justify-center gap-1.5">
+            <div className="mt-5 flex justify-center gap-1">
               {heroShots.map((s, i) => (
                 <button
                   key={`${s.src}-${i}`}
@@ -226,15 +226,19 @@ export function HeroShowcase() {
                     setIndex(i);
                     setProgress(0);
                   }}
-                  className="group relative h-1.5 overflow-hidden rounded-full bg-white/10 transition-[width,background-color] duration-300"
-                  style={{ width: i === index ? 28 : 8 }}
+                  className="flex h-11 w-8 items-center justify-center"
                 >
-                  {i === index && !reduceMotion && (
-                    <motion.span
-                      className="absolute inset-y-0 left-0 rounded-full"
-                      style={{ width: `${progress * 100}%`, background: s.accent }}
-                    />
-                  )}
+                  <span
+                    className="relative block h-1.5 overflow-hidden rounded-full bg-white/10 transition-[width,background-color] duration-300"
+                    style={{ width: i === index ? 28 : 8 }}
+                  >
+                    {i === index && !reduceMotion && (
+                      <motion.span
+                        className="absolute inset-y-0 left-0 rounded-full"
+                        style={{ width: `${progress * 100}%`, background: s.accent }}
+                      />
+                    )}
+                  </span>
                 </button>
               ))}
             </div>

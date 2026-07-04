@@ -20,14 +20,14 @@ export default function PressPage() {
           ← Cour
         </Link>
 
-        <h1 className="font-display mt-8 text-5xl font-bold tracking-tight">
+        <h1 className="font-display mt-8 text-[clamp(2rem,8vw,3rem)] font-bold tracking-tight">
           Press Kit
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
           Logos, screenshots, and fast facts for press, creators, and partners.
         </p>
 
-        <section className="card-premium mt-16 p-8">
+        <section className="card-premium mt-16 p-6 sm:p-8">
           <h2 className="font-display text-xl font-semibold">About Cour</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-[var(--text-muted)]">
             Cour is an independent studio building polished mobile games and apps.

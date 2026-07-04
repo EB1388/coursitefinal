@@ -27,6 +27,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 html.lenis,
@@ -36,12 +44,6 @@ html.lenis body {
 
 html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
-}
-
-body {
-  background: var(--bg);
-  color: var(--foreground);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {

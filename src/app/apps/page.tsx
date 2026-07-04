@@ -29,7 +29,7 @@ export default function AppsPage() {
           className="mt-8 max-w-2xl"
         >
           <p className="section-label text-[#7dd3fc]">Cour Apps</p>
-          <h1 className="font-display mt-4 text-5xl font-bold tracking-tight md:text-6xl">
+          <h1 className="font-display mt-4 text-[clamp(2rem,8vw,3rem)] font-bold tracking-tight md:text-6xl">
             {locale === "nl" ? "Tools die op je device leven." : "Tools that live on your device."}
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-[var(--text-muted)]">

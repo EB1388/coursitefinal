@@ -34,7 +34,7 @@ export function ProductTile({
       transition={{ duration: 0.45, delay: index * 0.06, ease: [0.23, 1, 0.32, 1] }}
     >
       <Link href={href} className="card-premium group flex flex-col md:flex-row md:items-center">
-        <div className="flex flex-1 flex-col p-8 md:p-10">
+        <div className="flex flex-1 flex-col p-6 sm:p-8 md:p-10">
           <p className="section-label" style={{ color: accent }}>
             {subtitle}
           </p>

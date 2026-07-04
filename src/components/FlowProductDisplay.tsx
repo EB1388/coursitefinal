@@ -209,7 +209,7 @@ export function FlowProductDisplay({
         </div>
 
         <h1
-          className={`font-display mt-5 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl xl:text-[3.25rem] ${
+          className={`font-display mt-5 text-[clamp(1.75rem,7vw,2.5rem)] font-bold leading-[1.05] tracking-tight md:text-5xl xl:text-[3.25rem] ${
             isScroll ? "[text-shadow:0_2px_28px_rgba(0,0,0,0.85)]" : ""
           }`}
         >

@@ -153,7 +153,7 @@ export function FlowProductDetailPage({ item }: { item: CourItem }) {
           ← {backLabel}
         </Link>
 
-        <div className="mt-10 rounded-[2rem] border border-white/8 bg-[#070b18]/80 p-6 backdrop-blur-sm md:p-10 lg:p-12">
+        <div className="mt-10 rounded-[1.5rem] border border-white/8 bg-[#070b18]/80 p-5 backdrop-blur-sm sm:rounded-[2rem] sm:p-6 md:p-10 lg:p-12">
           <FlowProductDisplay
             node={{ slug, name, accent, accentMuted, href, status }}
             narrative={narrative}

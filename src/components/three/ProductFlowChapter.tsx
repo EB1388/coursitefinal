@@ -17,7 +17,7 @@ import {
 } from "@/lib/productScenes";
 import type { UniverseNode } from "@/lib/universe";
 import { getFlowNarrative } from "@/lib/flowNarrative";
-import { useMotionTier } from "@/hooks/useMotionTier";
+import { useScrollEffectsEnabled } from "@/hooks/useMotionTier";
 import { useLocale } from "@/context/LocaleContext";
 
 import type { MutableRefObject, RefObject } from "react";
@@ -264,7 +264,7 @@ export function ProductFlowChapter({
   variant: FlowVariant;
 }) {
   const { locale } = useLocale();
-  const tier = useMotionTier();
+  const scrollEffects = useScrollEffectsEnabled();
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const viewTrackRef = useRef<HTMLDivElement>(null);
@@ -284,7 +284,7 @@ export function ProductFlowChapter({
   const activeSlug = slugs[activeIndex] ?? slugs[0];
 
   useEffect(() => {
-    if (reduceMotion || tier === "static" || !sectionRef.current || nodes.length === 0) return;
+    if (!scrollEffects || !sectionRef.current || nodes.length === 0) return;
 
     const ctx = gsap.context(() => {
       const trigger = ScrollTrigger.create({
@@ -319,7 +319,7 @@ export function ProductFlowChapter({
     ScrollTrigger.refresh();
 
     return () => ctx.revert();
-  }, [reduceMotion, tier, nodes.length, flow.scrub]);
+  }, [scrollEffects, nodes.length, flow.scrub]);
 
   const active = nodes[activeIndex];
   if (!active || !activeSlug) return null;
@@ -327,7 +327,7 @@ export function ProductFlowChapter({
   const narrative = getFlowNarrative(active.slug);
   const lang = locale === "nl" ? "nl" : "en";
 
-  if (tier === "static" || reduceMotion) {
+  if (!scrollEffects || reduceMotion) {
     return (
       <section className="border-t border-white/5 px-6 py-24">
         <div className="mx-auto max-w-6xl">

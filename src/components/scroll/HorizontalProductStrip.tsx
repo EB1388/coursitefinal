@@ -5,13 +5,12 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "motion/react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import type { UniverseNode } from "@/lib/universe";
 import { apps } from "@/lib/apps";
 import { products } from "@/lib/products";
 import { useLocale } from "@/context/LocaleContext";
-import { useMotionTier } from "@/hooks/useMotionTier";
+import { useScrollEffectsEnabled } from "@/hooks/useMotionTier";
 import { isAppPromoSrc } from "@/lib/appPromoShots";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,8 +40,7 @@ export function HorizontalProductStrip({
   variant: "games" | "apps";
 }) {
   const { locale } = useLocale();
-  const reduceMotion = useReducedMotion();
-  const tier = useMotionTier();
+  const scrollEffects = useScrollEffectsEnabled();
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +49,7 @@ export function HorizontalProductStrip({
   const showHeader = variant === "apps";
 
   useEffect(() => {
-    if (reduceMotion || tier === "static" || !sectionRef.current || !trackRef.current) return;
+    if (!scrollEffects || !sectionRef.current || !trackRef.current) return;
     if (nodes.length <= 2) return;
 
     const track = trackRef.current;
@@ -76,9 +74,9 @@ export function HorizontalProductStrip({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [reduceMotion, tier, nodes.length]);
+  }, [scrollEffects, nodes.length]);
 
-  const isStatic = tier === "static" || reduceMotion || nodes.length <= 2;
+  const isStatic = !scrollEffects || nodes.length <= 2;
 
   return (
     <section
@@ -101,13 +99,15 @@ export function HorizontalProductStrip({
       <div className={`overflow-hidden pb-24 ${showHeader ? "pt-4" : "pt-16"}`}>
         <div
           ref={trackRef}
-          className={`flex gap-5 px-6 ${isStatic ? "mx-auto max-w-6xl flex-wrap" : "w-max"}`}
+          className={`flex gap-5 px-6 ${isStatic ? "mx-auto max-w-6xl flex-wrap justify-center" : "w-max"}`}
         >
           {nodes.map((node) => (
             <Link
               key={node.slug}
               href={node.href}
-              className={`focus-ring group relative flex w-[min(85vw,280px)] shrink-0 cursor-pointer flex-col overflow-hidden transition-[border-color,box-shadow,transform] duration-300 active:scale-[0.99] ${
+              className={`focus-ring group relative flex shrink-0 cursor-pointer flex-col overflow-hidden transition-[border-color,box-shadow,transform] duration-300 active:scale-[0.99] ${
+                isStatic ? "w-full sm:w-[min(85vw,280px)]" : "w-[min(85vw,280px)]"
+              } ${
                 variant === "apps"
                   ? "rounded-2xl border border-white/[0.07] bg-[#111113] hover:border-white/12 hover:shadow-[0_16px_48px_rgba(0,0,0,0.32)]"
                   : "rounded-[1.75rem] border border-white/[0.08] bg-[#070b14]/90 hover:border-white/14 hover:shadow-[0_24px_64px_rgba(0,0,0,0.4)]"

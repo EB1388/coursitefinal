@@ -25,6 +25,19 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   const links = [
     { href: "/games", label: "Games", active: section === "gaming" },
     { href: "/apps", label: "Apps", active: section === "apps" },
@@ -83,11 +96,12 @@ export function SiteHeader() {
           <LocaleToggle />
           <button
             type="button"
-            className="rounded-full border border-[var(--border)] px-3 py-1.5 text-xs text-[var(--text-muted)] md:hidden"
+            className="min-h-11 rounded-full border border-[var(--border)] px-4 py-2 text-xs text-[var(--text-muted)] md:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
           >
-            Menu
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </motion.div>
@@ -111,7 +125,7 @@ export function SiteHeader() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-sm text-[var(--text-muted)] hover:bg-white/[0.04] hover:text-[var(--text)]"
+                  className="block min-h-11 rounded-xl px-4 py-3 text-sm text-[var(--text-muted)] hover:bg-white/[0.04] hover:text-[var(--text)]"
                 >
                   {link.label}
                 </Link>

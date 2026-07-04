@@ -110,8 +110,8 @@ export function ShowcaseBlock({
       whileHover={reduceMotion ? undefined : { y: minimal ? -2 : -3 }}
       className={
         minimal
-          ? "showcase-panel-minimal group relative min-h-[min(100vh,920px)] scroll-mt-28 overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-300"
-          : "showcase-panel group relative min-h-[min(100vh,920px)] scroll-mt-28 overflow-hidden rounded-[2rem] border border-white/8 bg-[#070b18] transition-[border-color,box-shadow] duration-300 hover:border-white/14 hover:shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
+          ? "showcase-panel-minimal group relative min-h-0 scroll-mt-28 overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-300 md:min-h-[min(85vh,920px)]"
+          : "showcase-panel group relative min-h-0 scroll-mt-28 overflow-hidden rounded-[2rem] border border-white/8 bg-[#070b18] transition-[border-color,box-shadow] duration-300 hover:border-white/14 hover:shadow-[0_24px_80px_rgba(0,0,0,0.35)] md:min-h-[min(85vh,920px)]"
       }
       style={minimal || skipLiveBg ? undefined : { background: `linear-gradient(135deg, ${glow}, transparent 55%)` }}
     >
@@ -135,7 +135,7 @@ export function ShowcaseBlock({
       )}
 
       <div
-        className={`relative z-10 grid items-center gap-10 p-8 md:p-12 lg:grid-cols-2 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}
+        className={`relative z-10 grid items-center gap-8 p-6 sm:gap-10 sm:p-8 md:p-12 lg:grid-cols-2 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}
       >
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, x: textFrom }}
@@ -173,7 +173,7 @@ export function ShowcaseBlock({
           </div>
           <h3
             className={`mt-3 tracking-tight ${
-              minimal ? "text-4xl font-medium text-white/92 md:text-5xl" : "text-4xl font-bold md:text-5xl"
+              minimal ? "text-3xl font-medium text-white/92 sm:text-4xl md:text-5xl" : "text-3xl font-bold sm:text-4xl md:text-5xl"
             }`}
             style={{ fontFamily: minimal ? "var(--font-dm-sans)" : "var(--font-syne)", color: minimal ? undefined : accentMuted }}
           >
