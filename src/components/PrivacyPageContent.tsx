@@ -59,7 +59,13 @@ export function PrivacyPageContent({ slug }: { slug: string }) {
             </h2>
             <p className="mt-3 text-[var(--text-muted)]">
               For privacy questions about {item.name}, contact Cour at{" "}
-              <strong className="text-[var(--text)]">{doc.contact}</strong>
+              <a
+                href={`mailto:${doc.contact}`}
+                className="font-medium text-[var(--text)] underline underline-offset-2"
+              >
+                {doc.contact}
+              </a>
+              .
             </p>
             <Link
               href="/privacy"

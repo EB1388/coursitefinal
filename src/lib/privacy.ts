@@ -13,8 +13,42 @@ export type PrivacyDoc = {
   contact: string;
 };
 
+const UPDATED = "17 July 2026";
+
+const thirdPartyEqualProtection =
+  "When Cour uses a third-party service that processes data in connection with a product (for example Apple frameworks or Google AdMob), Cour requires that those providers protect user data with protections that are the same as, or equal to, the protections described in this policy and required by Apple's App Review Guidelines.";
+
+function retentionDeletionSection(productName: string, extras: string[] = []): PrivacySection {
+  return {
+    title: "Data Retention And Deletion",
+    paragraphs: [
+      `Local gameplay, preference, and progress data for ${productName} is retained on your device until you clear it or delete the app.`,
+      `You can delete local data by deleting ${productName} from your device. If you use optional Apple services (such as Game Center or Apple Music), you can manage or delete related data through your Apple ID and the relevant Apple product settings.`,
+      `To request deletion of any personal information Cour may hold about you in connection with ${productName}, email ${CONTACT_EMAIL} with your request. We will respond within a reasonable time and delete or anonymize information we control, except where we must retain it for legal, security, or fraud-prevention reasons.`,
+      ...extras,
+    ],
+  };
+}
+
+function consentSection(hasAds: boolean): PrivacySection {
+  return {
+    title: "Consent, Privacy Choices, And Withdrawal",
+    paragraphs: hasAds
+      ? [
+          "Where required by law, we ask for your advertising and tracking privacy choices before requesting personalized ads.",
+          "You can withdraw advertising or tracking consent at any time by declining App Tracking Transparency prompts, updating options in the app's settings (where available), resetting your advertising identifier in iOS Settings, or changing privacy settings for Apple services you use.",
+          `You can also email ${CONTACT_EMAIL} to ask how to withdraw consent or exercise privacy rights available in your region.`,
+        ]
+      : [
+          "Cour does not sell personal data. Optional features that need permissions (for example microphone, Photos, or Apple Music) only run after you grant access.",
+          "You can withdraw permission at any time in iOS Settings for the app, or by disabling the related feature in the app.",
+          `You can also email ${CONTACT_EMAIL} to ask how to withdraw consent or exercise privacy rights available in your region.`,
+        ],
+  };
+}
+
 export const companyPrivacyDoc: PrivacyDoc = {
-  updated: "3 July 2026",
+  updated: UPDATED,
   intro:
     "Cour is an independent studio that builds mobile games and apps. This Privacy Policy describes how Cour handles information at the studio level. Each Cour product also has its own privacy policy with product-specific details.",
   sections: [
@@ -28,8 +62,15 @@ export const companyPrivacyDoc: PrivacyDoc = {
     {
       title: "Product Privacy Policies",
       paragraphs: [
-        "Each Cour game and app handles data according to its own privacy policy. Those policies explain what is stored on your device, which optional services (such as Game Center, AdMob, or Apple Music) may be used, and how to contact us about that product.",
+        "Each Cour game and app handles data according to its own privacy policy. Those policies explain what is stored on your device, which optional services (such as Game Center, AdMob, or Apple Music) may be used, how long data is retained, how to request deletion, and how to contact us about that product.",
         "For product-specific details, see the privacy policies linked below.",
+      ],
+    },
+    {
+      title: "Data Retention And Deletion",
+      paragraphs: [
+        "Website server logs are retained only as long as needed for security and site operation, then deleted or anonymized.",
+        `To request deletion of personal information Cour may hold about you, email ${CONTACT_EMAIL}. We will respond within a reasonable time and delete or anonymize information we control, except where retention is required by law or needed for security.`,
       ],
     },
     {
@@ -42,6 +83,7 @@ export const companyPrivacyDoc: PrivacyDoc = {
       title: "Third-Party Services",
       paragraphs: [
         "Some Cour products integrate third-party services such as Apple Game Center, Google AdMob, ShazamKit, or MusicKit. Those services are governed by their own privacy policies. Product-specific policies explain which services apply to each app or game.",
+        thirdPartyEqualProtection,
       ],
     },
     {
@@ -56,7 +98,7 @@ export const companyPrivacyDoc: PrivacyDoc = {
 
 export const privacyDocs: Record<string, PrivacyDoc> = {
   starhook: {
-    updated: "2 July 2026",
+    updated: UPDATED,
     intro:
       "Starhook is a mobile game by Cour. This Privacy Policy explains what information may be collected or used when you play Starhook.",
     sections: [
@@ -78,14 +120,13 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
         paragraphs: [
           "Starhook may show optional rewarded ads using Google AdMob. Rewarded ads are shown only when you choose to watch an ad in exchange for an in-game reward, such as extra stardust.",
           "Google AdMob may collect or use information such as device information, advertising identifiers, approximate location, ad interactions, diagnostics, and other data used to provide, measure, and improve advertising. Depending on your location, you may be shown a consent form before ads are requested.",
+          "On iOS 14 and later, Starhook may present App Tracking Transparency when personalized advertising requires tracking permission. You can decline and still play; ads may be less personalized.",
         ],
       },
-      {
-        title: "Consent And Privacy Choices",
-        paragraphs: [
-          "Where required, Starhook will ask for your advertising privacy choices before requesting ads. If privacy options are available in your region, Starhook may provide a way to review or update those choices from the app's settings.",
-        ],
-      },
+      consentSection(true),
+      retentionDeletionSection("Starhook", [
+        "Advertising data collected by Google AdMob is retained according to Google's policies. You can limit ad tracking in iOS Settings and through any in-app privacy options Starhook provides.",
+      ]),
       {
         title: "Children",
         paragraphs: [
@@ -94,7 +135,10 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
       },
       {
         title: "Third-Party Services",
-        paragraphs: ["Starhook may use the following third-party services:"],
+        paragraphs: [
+          "Starhook may use the following third-party services:",
+          thirdPartyEqualProtection,
+        ],
         bullets: [
           "Google AdMob for optional rewarded advertising.",
           "Apple Game Center for leaderboards and achievements.",
@@ -107,10 +151,10 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
         ],
       },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
   neondrift: {
-    updated: "18 June 2026",
+    updated: UPDATED,
     intro:
       'Neon Drift ("the App") is developed by Cour. This policy explains what data the App collects and how it is used.',
     sections: [
@@ -133,17 +177,38 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
           "On iOS 14+, the App may request permission to track activity across apps for personalized ads (App Tracking Transparency). You can decline and still play; ad relevance may be reduced.",
         ],
       },
+      consentSection(true),
+      retentionDeletionSection("Neon Drift", [
+        "Advertising data collected by Google AdMob is retained according to Google's policies. You can limit ad tracking in iOS Settings.",
+      ]),
       {
         title: "Children",
         paragraphs: [
           "The App is not directed at children under 13. We do not knowingly collect personal information from children.",
         ],
       },
+      {
+        title: "Third-Party Services",
+        paragraphs: [
+          "Neon Drift may use the following third-party services:",
+          thirdPartyEqualProtection,
+        ],
+        bullets: [
+          "Google AdMob for optional rewarded advertising.",
+          "Apple Game Center for leaderboards and achievements.",
+        ],
+      },
+      {
+        title: "Changes To This Policy",
+        paragraphs: [
+          "This Privacy Policy may be updated from time to time. Any changes will be posted on this page with an updated date.",
+        ],
+      },
     ],
-    contact: "GitHub Issues at github.com/eb1388/neondrift/issues",
+    contact: CONTACT_EMAIL,
   },
   spindodge: {
-    updated: "June 2026",
+    updated: UPDATED,
     intro:
       "Spin Dodge stores gameplay progress locally on your device. Optional Game Center features send scores to Apple. Optional rewarded ads use Google AdMob, which may collect advertising identifiers per Google's policy. We do not sell personal data.",
     sections: [
@@ -162,14 +227,42 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
       {
         title: "Advertising",
         paragraphs: [
-          "Optional rewarded ads may be served through Google AdMob. See Google's Privacy Policy for details on ad-related data collection.",
+          "Optional rewarded ads may be served through Google AdMob. Google may collect or use device information, advertising identifiers, approximate location, ad interactions, and diagnostics to provide and measure ads.",
+          "Where required, Spin Dodge may present consent or App Tracking Transparency prompts before personalized ads. You can decline and still play.",
+        ],
+      },
+      consentSection(true),
+      retentionDeletionSection("Spin Dodge", [
+        "Advertising data collected by Google AdMob is retained according to Google's policies. You can limit ad tracking in iOS Settings.",
+      ]),
+      {
+        title: "Children",
+        paragraphs: [
+          "Spin Dodge is not directed at children under 13. We do not knowingly collect personal information from children.",
+        ],
+      },
+      {
+        title: "Third-Party Services",
+        paragraphs: [
+          "Spin Dodge may use the following third-party services:",
+          thirdPartyEqualProtection,
+        ],
+        bullets: [
+          "Google AdMob for optional rewarded advertising.",
+          "Apple Game Center for leaderboards and achievements.",
+        ],
+      },
+      {
+        title: "Changes To This Policy",
+        paragraphs: [
+          "This Privacy Policy may be updated from time to time. Any changes will be posted on this page with an updated date.",
         ],
       },
     ],
-    contact: "GitHub Issues at github.com/eb1388/spindodge/issues",
+    contact: CONTACT_EMAIL,
   },
   sonr: {
-    updated: "3 July 2026",
+    updated: UPDATED,
     intro:
       "Sonr is a music utility by Cour. This policy explains what information may be accessed when you use Sonr to identify songs and save them to Apple Music.",
     sections: [
@@ -197,9 +290,16 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
           "If you choose to save a match, Sonr uses MusicKit to search Apple Music and add songs to your playlist. Apple processes your Apple Music account and library according to Apple's privacy policy.",
         ],
       },
+      consentSection(false),
+      retentionDeletionSection("Sonr", [
+        "Media you import is processed for the feature you requested and is not uploaded to Cour's servers. Apple Music and ShazamKit data is handled under Apple's retention practices.",
+      ]),
       {
         title: "Third-Party Services",
-        paragraphs: ["Sonr may use the following Apple frameworks:"],
+        paragraphs: [
+          "Sonr may use the following Apple frameworks:",
+          thirdPartyEqualProtection,
+        ],
         bullets: [
           "ShazamKit for song identification.",
           "MusicKit for Apple Music playlist sync.",
@@ -212,11 +312,17 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
           "Sonr is not directed at children under 13. We do not knowingly collect personal information from children.",
         ],
       },
+      {
+        title: "Changes To This Policy",
+        paragraphs: [
+          "This Privacy Policy may be updated from time to time. Any changes will be posted on this page with an updated date.",
+        ],
+      },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
   courlearn: {
-    updated: "3 July 2026",
+    updated: UPDATED,
     intro:
       "CourLearn is powered by Couri, an on-device AI coach built by Cour. This policy explains how the app handles your information.",
     sections: [
@@ -244,13 +350,30 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
           "CourLearn is designed to minimize data collection. We do not sell personal data. If analytics are added in future versions, this policy will be updated before they are enabled.",
         ],
       },
+      consentSection(false),
+      retentionDeletionSection("CourLearn", [
+        "If you later enable optional cloud AI features, that processing happens only with your consent, and you can withdraw consent by disabling those features and contacting us for deletion of any related data Cour controls.",
+      ]),
       {
         title: "Children",
         paragraphs: [
           "CourLearn is not directed at children under 13 without parental involvement. We do not knowingly collect personal information from children.",
         ],
       },
+      {
+        title: "Third-Party Services",
+        paragraphs: [
+          "CourLearn is designed to keep core coaching on-device. If a future version uses a third-party AI or analytics provider, this policy will be updated first.",
+          thirdPartyEqualProtection,
+        ],
+      },
+      {
+        title: "Changes To This Policy",
+        paragraphs: [
+          "This Privacy Policy may be updated from time to time. Any changes will be posted on this page with an updated date.",
+        ],
+      },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
 };

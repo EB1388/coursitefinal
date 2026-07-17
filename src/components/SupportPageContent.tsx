@@ -60,16 +60,12 @@ export function SupportPageContent({ slug }: { slug: string }) {
           <h2 className="font-display font-semibold">Still need help?</h2>
           <p className="mt-2 text-sm text-[var(--text-muted)]">
             Reach us at{" "}
-            {supportEmail ? (
-              <a
-                href={`mailto:${supportEmail}`}
-                className="text-[var(--text)] underline underline-offset-2"
-              >
-                {supportEmail}
-              </a>
-            ) : (
-              <span>{doc.contact}</span>
-            )}
+            <a
+              href={`mailto:${supportEmail || doc.contact}`}
+              className="text-[var(--text)] underline underline-offset-2"
+            >
+              {supportEmail || doc.contact}
+            </a>
           </p>
           <Link
             href={itemPrivacyPath(item)}

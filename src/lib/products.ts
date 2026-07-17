@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 export type CourProduct = {
   slug: string;
   name: string;
@@ -45,7 +47,7 @@ export const products: CourProduct[] = [
       "/screenshots/courlearn/coach-active.png",
       "/screenshots/courlearn/05-speaking-warmup.png",
     ],
-    supportEmail: "support@starhook.app",
+    supportEmail: CONTACT_EMAIL,
     waitlist: true,
     showcaseReversed: true,
   },
@@ -78,7 +80,7 @@ export const products: CourProduct[] = [
       "/screenshots/sonr/sonr-store-01-boot.png",
       "/screenshots/sonr/sonr-store-06-settings.png",
     ],
-    supportEmail: "support@starhook.app",
+    supportEmail: CONTACT_EMAIL,
     waitlist: true,
     showcaseReversed: false,
   },

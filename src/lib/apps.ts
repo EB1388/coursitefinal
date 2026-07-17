@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 export type CourApp = {
   slug: string;
   name: string;
@@ -50,7 +52,7 @@ export const apps: CourApp[] = [
       "/screenshots/starhook/starhook-menu.png",
       "/screenshots/starhook/starhook-menu-theme-store-ready.png",
     ],
-    supportEmail: "support@starhook.app",
+    supportEmail: CONTACT_EMAIL,
     hasAds: true,
     hasGameCenter: true,
     flipScreenshots: false,
@@ -84,6 +86,7 @@ export const apps: CourApp[] = [
       "/screenshots/neondrift/05-settings.png",
     ],
     githubIssues: "https://github.com/eb1388/neondrift/issues",
+    supportEmail: CONTACT_EMAIL,
     hasAds: true,
     hasGameCenter: true,
   },
@@ -116,6 +119,7 @@ export const apps: CourApp[] = [
       "/screenshots/spindodge/05-orbit-tree.png",
     ],
     githubIssues: "https://github.com/eb1388/spindodge/issues",
+    supportEmail: CONTACT_EMAIL,
     hasAds: true,
     hasGameCenter: true,
   },

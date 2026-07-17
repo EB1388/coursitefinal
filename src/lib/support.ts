@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -39,12 +41,16 @@ export const supportDocs: Record<string, SupportDoc> = {
         answer:
           "Delete and reinstall the app to reset local progress. Game Center leaderboard entries are managed through your Apple ID settings.",
       },
+      {
+        question: "How do I request data deletion?",
+        answer: `Email ${CONTACT_EMAIL} with your request. Local progress is also removed when you delete the app.`,
+      },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
   neondrift: {
     intro:
-      "Questions about Neon Drift? Check the FAQs below or open an issue on GitHub.",
+      "Questions about Neon Drift? Check the FAQs below or email us — we're happy to help.",
     faqs: [
       {
         question: "How do controls work?",
@@ -66,12 +72,15 @@ export const supportDocs: Record<string, SupportDoc> = {
         answer:
           "Make sure you're signed into Game Center in iOS Settings and have an active internet connection. Restart the app after signing in.",
       },
+      {
+        question: "How do I request data deletion?",
+        answer: `Email ${CONTACT_EMAIL} with your request. Local progress is also removed when you delete the app.`,
+      },
     ],
-    contact: "github.com/eb1388/neondrift/issues",
+    contact: CONTACT_EMAIL,
   },
   spindodge: {
-    intro:
-      "Spin Dodge support — find answers to common questions or contact us via GitHub.",
+    intro: "Spin Dodge support — find answers to common questions or email us.",
     faqs: [
       {
         question: "How do I flip direction?",
@@ -93,8 +102,12 @@ export const supportDocs: Record<string, SupportDoc> = {
         answer:
           "Level mode has timed stages and bosses. Unlimited mode has no timer — chase high combo scores with near-miss multipliers.",
       },
+      {
+        question: "How do I request data deletion?",
+        answer: `Email ${CONTACT_EMAIL} with your request. Local progress is also removed when you delete the app.`,
+      },
     ],
-    contact: "github.com/eb1388/spindodge/issues",
+    contact: CONTACT_EMAIL,
   },
   sonr: {
     intro:
@@ -120,8 +133,12 @@ export const supportDocs: Record<string, SupportDoc> = {
         answer:
           "No. Audio extraction and identification happen on your device. Sonr does not upload your media files to Cour's servers.",
       },
+      {
+        question: "How do I request data deletion?",
+        answer: `Email ${CONTACT_EMAIL} with your request. Local history is also removed when you delete the app.`,
+      },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
   courlearn: {
     intro:
@@ -147,7 +164,11 @@ export const supportDocs: Record<string, SupportDoc> = {
         answer:
           "Delete and reinstall the app to reset local progress, or use in-app settings if a reset option is available in your build.",
       },
+      {
+        question: "How do I request data deletion?",
+        answer: `Email ${CONTACT_EMAIL} with your request. Local progress is also removed when you delete the app.`,
+      },
     ],
-    contact: "support@starhook.app",
+    contact: CONTACT_EMAIL,
   },
 };
