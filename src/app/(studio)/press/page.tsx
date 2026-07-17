@@ -4,7 +4,7 @@ import Link from "next/link";
 import { apps } from "@/lib/apps";
 import { getAllSlugs, resolveItem } from "@/lib/items";
 import { products } from "@/lib/products";
-import { privacyPolicyUrl } from "@/lib/site";
+import { CONTACT_EMAIL, privacyPolicyUrl } from "@/lib/site";
 import { PressQrGrid } from "@/components/PressQrGrid";
 
 export const metadata: Metadata = {
@@ -35,7 +35,10 @@ export default function PressPage() {
             experiences — from one-tap arcade games to AI-native learning tools.
           </p>
           <p className="mt-4 text-sm text-[var(--text-faint)]">
-            Website: cour.software · Contact: support@starhook.app
+            Website: cour.software · Contact:{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[var(--text-muted)]">
+              {CONTACT_EMAIL}
+            </a>
           </p>
         </section>
 

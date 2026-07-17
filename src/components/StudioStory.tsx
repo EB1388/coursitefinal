@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { EASE_OUT } from "@/lib/motion";
 import { useLocale } from "@/context/LocaleContext";
+import { EASE_OUT } from "@/lib/motion";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 const cardAccents = [
   "rgba(141, 180, 255, 0.12)",
@@ -55,6 +56,15 @@ export function StudioStory() {
             {locale === "nl" ? "Klein studio. Grote obsessie." : "Small studio. Big obsession."}
           </h2>
           <p className="mt-5 leading-relaxed text-white/55">{body}</p>
+          <p className="mt-6 text-sm text-white/45">
+            {locale === "nl" ? "Contact:" : "Contact:"}{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-2 gap-4">

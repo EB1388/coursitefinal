@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/site";
+
 export type PrivacySection = {
   title: string;
   paragraphs: string[];
@@ -49,7 +51,7 @@ export const companyPrivacyDoc: PrivacyDoc = {
       ],
     },
   ],
-  contact: "support@starhook.app",
+  contact: CONTACT_EMAIL,
 };
 
 export const privacyDocs: Record<string, PrivacyDoc> = {

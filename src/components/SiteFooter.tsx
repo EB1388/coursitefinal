@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { apps } from "@/lib/apps";
 import { products } from "@/lib/products";
+import { CONTACT_EMAIL } from "@/lib/site";
 import { appPath, gamePath, itemPrivacyPath } from "@/lib/themes";
 
 export function SiteFooter() {
@@ -11,6 +12,15 @@ export function SiteFooter() {
           <p className="font-display text-xl font-bold">Cour</p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-[var(--text-muted)]">
             Independent studio. Games and apps with craft you can feel.
+          </p>
+          <p className="mt-4 text-sm text-[var(--text-muted)]">
+            Contact:{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-[var(--text)] underline-offset-4 hover:underline"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </p>
         </div>
 
