@@ -35,7 +35,7 @@ export const products: CourProduct[] = [
       "Offline-first Capacitor iOS shell",
     ],
     category: "learning",
-    status: "beta",
+    status: "in-development",
     accent: "#a855f7",
     accentMuted: "#7dd3fc",
     glow: "rgba(168, 85, 247, 0.22)",
