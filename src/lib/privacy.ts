@@ -154,48 +154,69 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
     contact: CONTACT_EMAIL,
   },
   neondrift: {
-    updated: UPDATED,
+    updated: "18 July 2026",
     intro:
-      'Neon Drift ("the App") is developed by Cour. This policy explains what data the App collects and how it is used.',
+      "Neon Drift is a mobile arcade game by Cour, available on iOS and Android. This Privacy Policy explains what information may be collected or used when you play Neon Drift on either platform.",
     sections: [
       {
         title: "Data Stored On Your Device",
         paragraphs: [
-          "The App saves game progress locally using UserDefaults, including high scores, coins, unlocked items, achievements, and settings. This data stays on your device unless you delete the App.",
+          "Neon Drift saves game progress locally on your device, including high scores, coins, unlocked items, achievements, settings, and (on Android) your personal score history. This data stays on your device unless you delete the app or clear app data. Cour does not operate a Neon Drift account system.",
         ],
       },
       {
-        title: "Game Center",
+        title: "iOS — Game Center",
         paragraphs: [
-          "If you sign in to Game Center, your display name and leaderboard scores are handled by Apple according to Apple's privacy policy.",
+          "On iOS, if you sign in to Apple Game Center, your display name, leaderboard scores, and achievements are handled by Apple according to Apple's privacy policy. Game Center is optional.",
         ],
       },
       {
-        title: "Advertising (Google AdMob)",
+        title: "iOS — Advertising (Google AdMob)",
         paragraphs: [
-          "The App may show rewarded video ads via Google AdMob. Google may collect device identifiers, IP address, and ad interaction data to serve and measure ads.",
-          "On iOS 14+, the App may request permission to track activity across apps for personalized ads (App Tracking Transparency). You can decline and still play; ad relevance may be reduced.",
+          "On iOS, Neon Drift may show optional rewarded video ads via Google AdMob (for example, an optional revive after game over). Google may collect device identifiers, IP address, and ad interaction data to serve and measure ads, subject to Google's privacy policy.",
+          "On iOS 14+, the app may request permission to track activity across apps for personalized ads (App Tracking Transparency). You can decline and still play; ad relevance may be reduced.",
+        ],
+      },
+      {
+        title: "Android — Personal Scores",
+        paragraphs: [
+          "On Android, the in-app Scores board is personal and local to your device. Scores are not uploaded to Cour servers. The current Android build does not require Google Play Games sign-in for scores or achievements.",
+        ],
+      },
+      {
+        title: "Android — Advertising And Play Games",
+        paragraphs: [
+          "The current Android build does not include AdMob ads. If ads are added later, this policy will be updated before they are enabled.",
+          "If a future Android update enables Google Play Games for cloud leaderboards or achievements, related player profile and score data would be handled by Google according to Google's privacy policy. That sign-in would be optional.",
+        ],
+      },
+      {
+        title: "Permissions",
+        paragraphs: [
+          "Android may use vibration for optional haptic feedback. Internet access may be present for platform services. You do not need to create a Cour account to play.",
         ],
       },
       consentSection(true),
       retentionDeletionSection("Neon Drift", [
-        "Advertising data collected by Google AdMob is retained according to Google's policies. You can limit ad tracking in iOS Settings.",
+        "Advertising data collected by Google AdMob (iOS) is retained according to Google's policies. You can limit ad tracking in iOS Settings.",
+        "On Android, personal scores and other local progress remain on your device until you clear app data or uninstall Neon Drift.",
       ]),
       {
         title: "Children",
         paragraphs: [
-          "The App is not directed at children under 13. We do not knowingly collect personal information from children.",
+          "Neon Drift is not directed at children under 13. We do not knowingly collect personal information from children.",
         ],
       },
       {
         title: "Third-Party Services",
         paragraphs: [
-          "Neon Drift may use the following third-party services:",
+          "Depending on platform and version, Neon Drift may use the following third-party services:",
           thirdPartyEqualProtection,
         ],
         bullets: [
-          "Google AdMob for optional rewarded advertising.",
-          "Apple Game Center for leaderboards and achievements.",
+          "Apple Game Center (iOS) for optional leaderboards and achievements.",
+          "Google AdMob (iOS) for optional rewarded advertising.",
+          "Google Play Games (Android, optional / future) for cloud leaderboards or achievements if enabled.",
         ],
       },
       {
