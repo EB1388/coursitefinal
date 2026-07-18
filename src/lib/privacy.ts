@@ -186,19 +186,19 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
       {
         title: "Android — Advertising And Play Games",
         paragraphs: [
-          "The current Android build does not include AdMob ads. If ads are added later, this policy will be updated before they are enabled.",
+          "On Android, Neon Drift may show optional rewarded video ads via Google AdMob (for example, an optional revive after game over). Google may collect device identifiers, IP address, and ad interaction data to serve and measure ads, subject to Google's privacy policy. Watching an ad is optional; you can decline and still play.",
           "If a future Android update enables Google Play Games for cloud leaderboards or achievements, related player profile and score data would be handled by Google according to Google's privacy policy. That sign-in would be optional.",
         ],
       },
       {
         title: "Permissions",
         paragraphs: [
-          "Android may use vibration for optional haptic feedback. Internet access may be present for platform services. You do not need to create a Cour account to play.",
+          "Android may use vibration for optional haptic feedback. Internet access is used for optional rewarded ads and platform services. You do not need to create a Cour account to play.",
         ],
       },
       consentSection(true),
       retentionDeletionSection("Neon Drift", [
-        "Advertising data collected by Google AdMob (iOS) is retained according to Google's policies. You can limit ad tracking in iOS Settings.",
+        "Advertising data collected by Google AdMob (iOS and Android) is retained according to Google's policies. You can limit ad tracking in device Settings.",
         "On Android, personal scores and other local progress remain on your device until you clear app data or uninstall Neon Drift.",
       ]),
       {
@@ -215,7 +215,7 @@ export const privacyDocs: Record<string, PrivacyDoc> = {
         ],
         bullets: [
           "Apple Game Center (iOS) for optional leaderboards and achievements.",
-          "Google AdMob (iOS) for optional rewarded advertising.",
+          "Google AdMob (iOS and Android) for optional rewarded advertising.",
           "Google Play Games (Android, optional / future) for cloud leaderboards or achievements if enabled.",
         ],
       },
